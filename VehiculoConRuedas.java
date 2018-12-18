@@ -5,16 +5,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
-import descargaWeb.Averiable;
-import descargaWeb.Pieza;
-
 public abstract class VehiculoConRuedas extends Vehiculo implements Averiable {
 	
-//  int numeroDeRuedas;
+  int numeroDeRuedas;
   String matricula;
   boolean necesitaReparacion = false;
   Collection <Pieza> piezasReparar = new ArrayList<Pieza>(); 
   Date fechaTaller; 
+  int ordenTaller; 
     
 	
   //GETTERS AND SETTERS
@@ -49,7 +47,16 @@ public abstract class VehiculoConRuedas extends Vehiculo implements Averiable {
 	void setFechaTaller(Date fechaTaller) {
 		this.fechaTaller = fechaTaller;
 	}
-		
+			
+	int getOrdenTaller() {
+		return ordenTaller;
+	}
+
+	void setOrdenTaller(int ordenTaller) {
+		this.ordenTaller = ordenTaller;
+	}
+	
+	
 	//CONSTRUCTORES
   public VehiculoConRuedas () {
       this(null, null, null);
@@ -65,7 +72,7 @@ public abstract class VehiculoConRuedas extends Vehiculo implements Averiable {
 
 	@Override
   public String toString() {
-      return "Placa " + matricula + " - " + modelo + " (" + getColor() + "), ";
+      return "Placa " + matricula + " - " + modelo + " (" + getColor() + ") ";
   }
 
 	@Override
@@ -103,6 +110,21 @@ public abstract class VehiculoConRuedas extends Vehiculo implements Averiable {
 		public Date fechaEntradaTaller() {
 			return fechaTaller;
 		}
+
+	public double getCostePiezas() {
+		double costeTotalPiezas =0;
+		for (Pieza pieza : piezasReparar) {
+			costeTotalPiezas += pieza.getPrecio();
+		}
+		return costeTotalPiezas;
+	}
+
+	@Override
+	public int getTurnoTaller() {
+		return getOrdenTaller();
+	}
+
+
 
 	
 }

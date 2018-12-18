@@ -1,6 +1,7 @@
 package tallerdeCoches;
 
-public class Vehiculo implements Coloreable, ConMasa, Matriculable {
+
+public class Vehiculo implements Coloreable, Matriculable {
 	String modelo;
     String color;
     double masa;
@@ -33,16 +34,11 @@ public class Vehiculo implements Coloreable, ConMasa, Matriculable {
         this.modelo = modelo;
     }
 
-	@Override
-	public double getMasa() {
-		return masa;
-	}
-
-
+	
 	@Override
 	public String getMatricula() {
 		return null;
 	}
 
-
+	
 }

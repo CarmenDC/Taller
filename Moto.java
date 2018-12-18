@@ -5,7 +5,6 @@ package tallerdeCoches;
 import java.util.Collection;
 import java.util.Date;
 
-import descargaWeb.Pieza;
 
 public class Moto  extends VehiculoConRuedas {
 
@@ -29,7 +28,7 @@ public class Moto  extends VehiculoConRuedas {
 	public int getNumeroHorasTotalArreglo() {
 		int tiempo = 0;
 		for (Pieza pieza : this.getPiezasReparar()) {
-			tiempo += pieza.getTiempo();
+			tiempo += pieza.gethorasArreglo();
 		}
 		return tiempo;
 	}

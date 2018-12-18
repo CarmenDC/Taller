@@ -6,9 +6,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 
-import descargaWeb.Averiable;
-import descargaWeb.Pieza;
-
 public class EjecutableTaller {
 
 	public static void main(String[] args) throws ParseException {
@@ -22,22 +19,28 @@ public class EjecutableTaller {
 		Moto moto1 = new Moto ("BMW", "negro", format.parse("25/10/2018"));
 		moto1.setMatricula("0001GJJ");
 		
-		miTaller.ListaRepuestos.add(Pieza.FARO);
-		miTaller.ListaRepuestos.add(Pieza.FRENO);
-		miTaller.ListaRepuestos.add(Pieza.FRENO);
-		miTaller.ListaRepuestos.add(Pieza.BATERIA);
-		miTaller.ListaRepuestos.add(Pieza.RUEDA);
-		miTaller.ListaRepuestos.add(Pieza.MANGUITO);
+		Freno freno1 = new Freno();
+		Bateria bateria1 = new Bateria();
+		Embrague embrague1 = new Embrague();
+		Freno freno2 = new Freno();
+		Bateria bateria2 = new Bateria();
+				
+		miTaller.ListaRepuestos.add(freno1);
+		miTaller.ListaRepuestos.add(bateria1);
+//		miTaller.ListaRepuestos.add(embrague1);
+		miTaller.ListaRepuestos.add(bateria2);
+		miTaller.ListaRepuestos.add(freno2);
+	
 		
 		Collection<Pieza> reparacionesCoche1 = new ArrayList<Pieza>();
-		reparacionesCoche1.add(Pieza.FRENO);
-		reparacionesCoche1.add(Pieza.EMBRAGUE);
+		reparacionesCoche1.add(freno1);
+		reparacionesCoche1.add(bateria1);
 		
 		Collection<Pieza> reparacionesCoche2 = new ArrayList<Pieza>();
-		reparacionesCoche2.add(Pieza.MANGUITO);
+		reparacionesCoche2.add(embrague1);
 
 		Collection<Pieza> reparacionesMoto1 = new ArrayList<Pieza>();
-		reparacionesMoto1.add(Pieza.BATERIA);
+		reparacionesMoto1.add(freno2);
 		
 		coche1.setPiezasReparar(reparacionesCoche1);
 		coche2.setPiezasReparar(reparacionesCoche2);
@@ -46,6 +49,14 @@ public class EjecutableTaller {
 		miTaller.entradaVehiculoTaller(coche1);
 		miTaller.entradaVehiculoTaller(coche2);
 		miTaller.entradaVehiculoTaller(moto1);
+		
+		System.out.println("El orden de vehículos a arreglar del Taller es: ");
+		for (Averiable vehiculo : miTaller.ListaVehiculosConPiezas) {
+			System.out.println(vehiculo.toString());
+		}
+		for (Averiable vehiculo : miTaller.ListaVehiculosSinPiezas) {
+			System.out.println(""+vehiculo.toString()+" esperando piezas");
+		}
 		
 		
 	}
